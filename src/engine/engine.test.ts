@@ -209,6 +209,22 @@ describe("text objects", () => {
     { name: "dit empties a tag", lines: ["<p>hello</p>"], cursor: { line: 0, col: 4 }, keys: "dit", expect: ["<p></p>"] },
     { name: "dat removes the tag", lines: ["x<p>hi</p>y"], cursor: { line: 0, col: 5 }, keys: "dat", expect: ["xy"] },
     { name: "dip deletes the paragraph", lines: ["a", "b", "", "c"], keys: "dip", expect: ["", "c"] },
+    {
+      // Braces on their own lines make a block, and Vim removes the inner lines
+      // rather than emptying them, so no blank line is left behind.
+      name: "di{ on a block deletes the inner lines",
+      lines: ["fn() {", "  a();", "  b();", "}"],
+      cursor: { line: 1, col: 2 },
+      keys: "di{",
+      expect: ["fn() {", "}"],
+    },
+    {
+      name: "di{ on one line stays characterwise",
+      lines: ["fn() { a() }"],
+      cursor: { line: 0, col: 7 },
+      keys: "di{",
+      expect: ["fn() {}"],
+    },
   ]);
 });
 

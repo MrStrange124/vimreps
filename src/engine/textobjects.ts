@@ -3,7 +3,9 @@ import {
   bigCharClass,
   charAt,
   charClass,
+  firstNonBlank,
   lastLine,
+  lastNonBlank,
   lineAt,
   maxCol,
   nextPosition,
@@ -146,6 +148,21 @@ function pairObject(
   if (start.line > end.line || (start.line === end.line && start.col > end.col)) {
     return empty(start);
   }
+
+  // When the brackets sit on their own lines — a block, rather than an
+  // expression — the inner object is the lines between them. Treating it
+  // characterwise would delete the text but leave an empty line where the body
+  // was, which is not what `di{` does in Vim.
+  const openIsLast = found.open.col >= lastNonBlank(state, found.open.line);
+  const closeIsFirst = found.close.col <= firstNonBlank(state, found.close.line);
+  if (openIsLast && closeIsFirst && found.close.line > found.open.line + 1) {
+    return {
+      start: { line: found.open.line + 1, col: 0 },
+      end: { line: found.close.line - 1, col: maxCol(state, found.close.line - 1) },
+      kind: "linewise",
+    };
+  }
+
   return inclusive(start, end);
 }
 
