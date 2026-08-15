@@ -1,0 +1,10 @@
+export * from "./types";
+export { createState, bufferText, snapshot } from "./state";
+export { step, feed, feedKeys, pendingDisplay } from "./interpreter";
+export { parseKeys, formatKeys, tokenFromEvent, isPrintable } from "./keys";
+export { parseCommand } from "./parser";
+export { charClass, lineAt, maxCol, clampPosition } from "./text";
+export { resolveTextObject, TEXT_OBJECT_KEYS } from "./textobjects";
+export { MOTIONS, searchBuffer, wordUnderCursor } from "./motions";
+export { readRegister } from "./operators";
+export { vimRegexToJs, vimReplacementToJs } from "./ex";
