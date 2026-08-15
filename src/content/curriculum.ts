@@ -1,5 +1,7 @@
 import type { Lesson, Tier } from "./types";
 import { foundations } from "./tiers/foundations";
+import { motions } from "./tiers/motions";
+import { operators } from "./tiers/operators";
 
 /**
  * The single source of truth for the course.
@@ -8,7 +10,7 @@ import { foundations } from "./tiers/foundations";
  * dashboard all read from this one list. Nothing else keeps its own copy, so
  * they cannot drift apart.
  */
-export const TIERS: Tier[] = [foundations];
+export const TIERS: Tier[] = [foundations, motions, operators];
 
 export const LESSONS: Lesson[] = TIERS.flatMap((tier) => tier.lessons);
 
