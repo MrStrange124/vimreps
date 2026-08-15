@@ -1,0 +1,198 @@
+@import "tailwindcss";
+
+/*
+ * Cool slate ground, warm amber accent. The temperature contrast is the whole
+ * identity — everything structural is blue-grey and machine-like, and the one
+ * warm colour is reserved for the thing that is live: the cursor, the pending
+ * command, the lesson you are on.
+ */
+@theme {
+  --color-ground: #12161f;
+  --color-panel: #171c27;
+  --color-raised: #1d2331;
+  --color-rule: #262e3d;
+  --color-ink: #c9d3e3;
+  --color-muted: #707e94;
+  --color-faint: #4a5568;
+
+  --color-accent: #e8a33d;
+  --color-accent-dim: #8a6427;
+
+  --color-mode-insert: #6cc07a;
+  --color-mode-visual: #c98bdb;
+  --color-mode-command: #62a0ea;
+
+  --color-pass: #6cc07a;
+  --color-warn: #e8a33d;
+  --color-fail: #e06c75;
+
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", "Fira Code", Menlo,
+    Consolas, monospace;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background: var(--color-ground);
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ------------------------------------------------------------- the editor -- */
+
+.buffer {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 1.6;
+  tab-size: 4;
+}
+
+.buffer-line {
+  display: flex;
+  white-space: pre;
+}
+
+.gutter {
+  user-select: none;
+  color: var(--color-faint);
+  text-align: right;
+  padding-right: 1.25rem;
+  min-width: 3.5rem;
+  flex-shrink: 0;
+}
+
+/* Vim shows a tilde for every row past the end of the buffer. Keeping it makes
+   the pane read as an editor rather than a text box. */
+.tilde {
+  color: var(--color-faint);
+  opacity: 0.55;
+}
+
+.cell {
+  display: inline-block;
+  white-space: pre;
+}
+
+.cursor-block {
+  background: var(--color-accent);
+  color: var(--color-ground);
+}
+
+.cursor-bar {
+  box-shadow: inset 2px 0 0 var(--color-mode-insert);
+}
+
+.selected {
+  background: color-mix(in oklab, var(--color-mode-visual) 32%, transparent);
+}
+
+.match {
+  background: color-mix(in oklab, var(--color-accent) 22%, transparent);
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .cursor-block {
+    animation: cursor-settle 120ms ease-out;
+  }
+  @keyframes cursor-settle {
+    from {
+      opacity: 0.55;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+/* --------------------------------------------------------------- prose -- */
+
+.prose {
+  font-family: var(--font-sans);
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: color-mix(in oklab, var(--color-ink) 92%, white);
+  max-width: 68ch;
+}
+
+.prose p {
+  margin: 0 0 1.1em;
+}
+
+.prose ul {
+  margin: 0 0 1.1em;
+  padding-left: 1.1em;
+  list-style: none;
+}
+
+.prose li {
+  position: relative;
+  margin-bottom: 0.35em;
+}
+
+.prose li::before {
+  content: "·";
+  position: absolute;
+  left: -1.1em;
+  color: var(--color-accent);
+}
+
+.prose strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--color-raised);
+  border: 1px solid var(--color-rule);
+  border-radius: 3px;
+  padding: 0.1em 0.35em;
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------- keycap -- */
+
+.keycap {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: var(--color-raised);
+  border: 1px solid var(--color-rule);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  padding: 0.1rem 0.4rem;
+  color: var(--color-ink);
+}
+
+.scroll-thin::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: var(--color-rule);
+  border-radius: 6px;
+  border: 3px solid var(--color-ground);
+}
+.scroll-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
