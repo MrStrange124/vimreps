@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "vim·dojo",
   description:
-    "Learn Vim by using it: seventy lessons from modes to macros, each graded on the keys you press, not just the text you end up with.",
+    "Learn Vim by using it: a full course from modes to macros, each lesson graded on the keys you press, not just the text you end up with.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
