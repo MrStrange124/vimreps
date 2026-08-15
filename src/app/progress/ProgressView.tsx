@@ -15,10 +15,10 @@ import {
 function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div className="rounded border border-rule bg-panel px-4 py-3">
-      <div className="font-sans text-[26px] leading-none font-semibold text-ink tabular-nums">
+      <div className="font-sans text-[1.625rem] leading-none font-semibold text-ink tabular-nums">
         {value}
       </div>
-      <div className="mt-1.5 text-[11px] tracking-[0.1em] text-faint uppercase">{label}</div>
+      <div className="mt-1.5 text-[0.6875rem] tracking-[0.1em] text-faint uppercase">{label}</div>
     </div>
   );
 }
@@ -50,7 +50,7 @@ export function ProgressView() {
 
   if (!progress) {
     return (
-      <main className="mx-auto w-full max-w-3xl flex-1 px-5 py-9 text-[13px] text-muted">
+      <main className="mx-auto w-full max-w-3xl flex-1 px-5 py-9 text-[0.8125rem] text-muted">
         Reading your progress…
       </main>
     );
@@ -76,7 +76,7 @@ export function ProgressView() {
 
   return (
     <main className="mx-auto w-full max-w-3xl flex-1 px-5 py-9">
-      <h1 className="font-sans text-[28px] font-semibold text-white">Progress</h1>
+      <h1 className="font-sans text-[1.75rem] font-semibold text-white">Progress</h1>
       <p className="prose mt-2 mb-6">
         Kept in this browser only. Clearing your site data clears this.
       </p>
@@ -89,15 +89,15 @@ export function ProgressView() {
       </div>
 
       <section className="mb-8">
-        <h2 className="mb-2 text-[10.5px] font-semibold tracking-[0.16em] text-faint uppercase">
+        <h2 className="mb-2 text-[0.65625rem] font-semibold tracking-[0.16em] text-faint uppercase">
           Last twelve weeks
         </h2>
-        <div className="flex flex-wrap gap-[3px] rounded border border-rule bg-panel p-3">
+        <div className="flex flex-wrap gap-[0.1875rem] rounded border border-rule bg-panel p-3">
           {days.map((day) => (
             <span
               key={day}
               title={day}
-              className="h-[11px] w-[11px] rounded-[2px]"
+              className="h-[0.6875rem] w-[0.6875rem] rounded-[0.125rem]"
               style={{
                 background: practised.has(day)
                   ? "var(--color-accent)"
@@ -110,7 +110,7 @@ export function ProgressView() {
       </section>
 
       <section className="mb-8">
-        <h2 className="mb-2 text-[10.5px] font-semibold tracking-[0.16em] text-faint uppercase">
+        <h2 className="mb-2 text-[0.65625rem] font-semibold tracking-[0.16em] text-faint uppercase">
           Course
         </h2>
         <div className="space-y-2">
@@ -121,13 +121,13 @@ export function ProgressView() {
             const pct = Math.round((done / tier.lessons.length) * 100);
             return (
               <div key={tier.id} className="rounded border border-rule bg-panel px-3 py-2">
-                <div className="flex items-baseline gap-3 text-[13px]">
+                <div className="flex items-baseline gap-3 text-[0.8125rem]">
                   <span className="text-ink">{tier.title}</span>
-                  <span className="ml-auto text-[12px] text-faint tabular-nums">
+                  <span className="ml-auto text-[0.75rem] text-faint tabular-nums">
                     {done}/{tier.lessons.length}
                   </span>
                 </div>
-                <div className="mt-1.5 h-[3px] overflow-hidden rounded bg-raised">
+                <div className="mt-1.5 h-[0.1875rem] overflow-hidden rounded bg-raised">
                   <div
                     className="h-full"
                     style={{
@@ -144,7 +144,7 @@ export function ProgressView() {
 
       {weakest.length > 0 && (
         <section className="mb-8">
-          <h2 className="mb-2 text-[10.5px] font-semibold tracking-[0.16em] text-faint uppercase">
+          <h2 className="mb-2 text-[0.65625rem] font-semibold tracking-[0.16em] text-faint uppercase">
             Worth drilling
           </h2>
           <div className="flex flex-wrap gap-1.5">
@@ -155,7 +155,7 @@ export function ProgressView() {
               </span>
             ))}
           </div>
-          <Link href="/practice" className="mt-3 inline-block text-[12.5px] text-accent underline">
+          <Link href="/practice" className="mt-3 inline-block text-[0.78125rem] text-accent underline">
             Drill these →
           </Link>
         </section>
@@ -168,7 +168,7 @@ export function ProgressView() {
             setProgress(resetProgress());
           }
         }}
-        className="rounded border border-rule px-3 py-1.5 text-[12px] text-muted hover:border-fail hover:text-fail"
+        className="rounded border border-rule px-3 py-1.5 text-[0.75rem] text-muted hover:border-fail hover:text-fail"
       >
         Clear progress
       </button>

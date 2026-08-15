@@ -43,7 +43,7 @@ export function StatusBar({ state, keystrokes, par, dots }: Props) {
   const recording = state.macros.recording;
 
   return (
-    <div className="flex items-center gap-4 border-t border-rule bg-panel px-3 py-1.5 text-[12px]">
+    <div className="flex items-center gap-4 border-t border-rule bg-panel px-3 py-1.5 text-[0.75rem]">
       <span
         className="font-semibold tracking-[0.14em]"
         style={{ color: colour }}
@@ -76,7 +76,7 @@ export function StatusBar({ state, keystrokes, par, dots }: Props) {
             {Array.from({ length: dots.total }, (_, i) => (
               <span
                 key={i}
-                className="inline-block h-[6px] w-[6px] rounded-full"
+                className="inline-block h-[0.375rem] w-[0.375rem] rounded-full"
                 style={{
                   background:
                     i < dots.done

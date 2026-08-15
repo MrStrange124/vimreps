@@ -12,11 +12,11 @@ export default function Home() {
       <main className="mx-auto w-full max-w-4xl flex-1 px-5 py-14">
         {/* The thesis: the same three keys mean different things depending on
             the mode, which is the whole reason Vim needs teaching at all. */}
-        <div className="mb-3 text-[10.5px] font-semibold tracking-[0.16em] text-faint uppercase">
+        <div className="mb-3 text-[0.65625rem] font-semibold tracking-[0.16em] text-faint uppercase">
           {LESSONS.length} lessons · {exerciseCount} exercises · nothing locked
         </div>
 
-        <h1 className="font-sans text-[40px] leading-[1.1] font-semibold text-white sm:text-[52px]">
+        <h1 className="font-sans text-[2.5rem] leading-[1.1] font-semibold text-white sm:text-[3.25rem]">
           Learn Vim by
           <br />
           <span className="text-accent">using</span> Vim.
@@ -32,25 +32,25 @@ export default function Home() {
         <div className="mb-14 flex flex-wrap gap-3">
           <Link
             href="/lessons/modes"
-            className="rounded bg-accent px-4 py-2 text-[13px] font-semibold text-ground hover:brightness-110"
+            className="rounded bg-accent px-4 py-2 text-[0.8125rem] font-semibold text-ground hover:brightness-110"
           >
             Start at the beginning
           </Link>
           <Link
             href="/practice"
-            className="rounded border border-rule px-4 py-2 text-[13px] text-ink hover:bg-raised"
+            className="rounded border border-rule px-4 py-2 text-[0.8125rem] text-ink hover:bg-raised"
           >
             Drill what I know
           </Link>
           <Link
             href="/cheatsheet"
-            className="rounded border border-rule px-4 py-2 text-[13px] text-muted hover:bg-raised hover:text-ink"
+            className="rounded border border-rule px-4 py-2 text-[0.8125rem] text-muted hover:bg-raised hover:text-ink"
           >
             Cheatsheet
           </Link>
         </div>
 
-        <h2 className="mb-4 text-[10.5px] font-semibold tracking-[0.16em] text-faint uppercase">
+        <h2 className="mb-4 text-[0.65625rem] font-semibold tracking-[0.16em] text-faint uppercase">
           The course
         </h2>
 
@@ -62,16 +62,16 @@ export default function Home() {
             >
               <div className="flex items-baseline gap-3">
                 {/* These are genuinely sequential — each tier depends on the last. */}
-                <span className="text-[12px] text-faint tabular-nums">
+                <span className="text-[0.75rem] text-faint tabular-nums">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <h3 className="font-sans text-[17px] font-semibold text-ink">{tier.title}</h3>
-                <span className="ml-auto text-[11.5px] text-faint">
+                <h3 className="font-sans text-[1.0625rem] font-semibold text-ink">{tier.title}</h3>
+                <span className="ml-auto text-[0.71875rem] text-faint">
                   {tier.lessons.length} lessons
                 </span>
               </div>
 
-              <p className="prose mt-2 mb-3 text-[14px]">{tier.blurb}</p>
+              <p className="prose mt-2 mb-3 text-[0.875rem]">{tier.blurb}</p>
 
               <div className="flex flex-wrap gap-1.5">
                 {tier.lessons.map((lesson) => (
@@ -89,7 +89,7 @@ export default function Home() {
           ))}
         </ol>
 
-        <p className="mt-10 text-[12.5px] text-faint">
+        <p className="mt-10 text-[0.78125rem] text-faint">
           Progress is kept in this browser only. No account, no server.
         </p>
       </main>

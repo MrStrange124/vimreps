@@ -53,13 +53,13 @@ export function PracticeView() {
     <main className="mx-auto w-full max-w-3xl flex-1 px-5 py-9">
       <div className="mb-5 flex flex-wrap items-baseline justify-between gap-3">
         <div>
-          <h1 className="font-sans text-[28px] font-semibold text-white">Practice</h1>
-          <p className="mt-1 text-[13px] text-muted">
+          <h1 className="font-sans text-[1.75rem] font-semibold text-white">Practice</h1>
+          <p className="mt-1 text-[0.8125rem] text-muted">
             {current ? current.generator.label : "loading"} · drills keep coming until you
             stop
           </p>
         </div>
-        <div className="text-right text-[12.5px] text-muted">
+        <div className="text-right text-[0.78125rem] text-muted">
           <div>
             {session.solved} solved
             {accuracy !== null && <span className="text-faint"> · {accuracy}% this session</span>}
@@ -67,7 +67,7 @@ export function PracticeView() {
           <button
             type="button"
             onClick={skip}
-            className="mt-1 rounded border border-rule px-2 py-0.5 text-[11px] text-muted hover:text-ink"
+            className="mt-1 rounded border border-rule px-2 py-0.5 text-[0.6875rem] text-muted hover:text-ink"
           >
             skip this one
           </button>
@@ -83,13 +83,13 @@ export function PracticeView() {
           label={current.generator.skill}
         />
       ) : (
-        <div className="rounded border border-rule bg-panel p-6 text-[13px] text-muted">
+        <div className="rounded border border-rule bg-panel p-6 text-[0.8125rem] text-muted">
           Shuffling a drill…
         </div>
       )}
 
       <section className="mt-8">
-        <h2 className="mb-2 text-[10.5px] font-semibold tracking-[0.16em] text-faint uppercase">
+        <h2 className="mb-2 text-[0.65625rem] font-semibold tracking-[0.16em] text-faint uppercase">
           What gets drilled
         </h2>
         <div className="flex flex-wrap gap-1.5">
@@ -116,7 +116,7 @@ export function PracticeView() {
             );
           })}
         </div>
-        <p className="mt-3 text-[12px] text-faint">
+        <p className="mt-3 text-[0.75rem] text-faint">
           Skills you miss come round more often.
         </p>
       </section>

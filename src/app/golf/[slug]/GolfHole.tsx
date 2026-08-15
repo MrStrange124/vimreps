@@ -24,22 +24,22 @@ export function GolfHole({ slug }: { slug: string }) {
 
   return (
     <main className="mx-auto w-full max-w-3xl flex-1 px-5 py-9">
-      <Link href="/golf" className="text-[12px] text-faint hover:text-ink">
+      <Link href="/golf" className="text-[0.75rem] text-faint hover:text-ink">
         ← all holes
       </Link>
 
       <div className="mt-3 mb-1 flex flex-wrap items-baseline gap-3">
-        <h1 className="font-sans text-[26px] font-semibold text-white">{challenge.title}</h1>
+        <h1 className="font-sans text-[1.625rem] font-semibold text-white">{challenge.title}</h1>
         <span className="keycap">par {challenge.par}</span>
       </div>
       <p className="prose mb-6">{challenge.blurb}</p>
 
       {target && (
         <section className="mb-6">
-          <h2 className="mb-2 text-[10.5px] font-semibold tracking-[0.16em] text-faint uppercase">
+          <h2 className="mb-2 text-[0.65625rem] font-semibold tracking-[0.16em] text-faint uppercase">
             Target
           </h2>
-          <pre className="overflow-x-auto rounded border border-rule bg-panel px-3 py-2 text-[13.5px] leading-relaxed text-muted">
+          <pre className="overflow-x-auto rounded border border-rule bg-panel px-3 py-2 text-[0.84375rem] leading-relaxed text-muted">
             {target.join("\n") || "(empty)"}
           </pre>
         </section>
@@ -53,7 +53,7 @@ export function GolfHole({ slug }: { slug: string }) {
       />
 
       {score !== null && (
-        <div className="mt-5 rounded border border-rule bg-panel px-4 py-3 text-[13px]">
+        <div className="mt-5 rounded border border-rule bg-panel px-4 py-3 text-[0.8125rem]">
           <span
             style={{
               color:
@@ -69,7 +69,7 @@ export function GolfHole({ slug }: { slug: string }) {
                 ? " — exactly par."
                 : ` — par is ${challenge.par}.`}
           </span>
-          <div className="mt-2 flex flex-wrap items-center gap-2 text-[12px] text-faint">
+          <div className="mt-2 flex flex-wrap items-center gap-2 text-[0.75rem] text-faint">
             <span>worth knowing here:</span>
             {challenge.teaches.map((keys) => (
               <span key={keys} className="keycap">
@@ -80,7 +80,7 @@ export function GolfHole({ slug }: { slug: string }) {
           {next && (
             <Link
               href={`/golf/${next.slug}`}
-              className="mt-3 inline-block text-[12.5px] text-accent underline"
+              className="mt-3 inline-block text-[0.78125rem] text-accent underline"
             >
               Next hole: {next.title} →
             </Link>

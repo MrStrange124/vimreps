@@ -39,12 +39,12 @@ export function LessonView({ slug }: { slug: string }) {
 
         <main className="scroll-thin min-h-0 overflow-y-auto">
           <div className="mx-auto max-w-3xl px-5 py-7">
-            <div className="mb-1 text-[10.5px] font-semibold tracking-[0.16em] text-faint uppercase">
+            <div className="mb-1 text-[0.65625rem] font-semibold tracking-[0.16em] text-faint uppercase">
               {tierTitle}
             </div>
 
             <div className="mb-5 flex flex-wrap items-baseline gap-3">
-              <h1 className="font-sans text-[26px] leading-tight font-semibold text-white">
+              <h1 className="font-sans text-[1.625rem] leading-tight font-semibold text-white">
                 {lesson.title}
               </h1>
               <span className="keycap">{lesson.keys}</span>
@@ -62,7 +62,7 @@ export function LessonView({ slug }: { slug: string }) {
             </div>
 
             {complete && (
-              <div className="mb-6 rounded border border-pass/40 bg-raised px-4 py-3 text-[13px]">
+              <div className="mb-6 rounded border border-pass/40 bg-raised px-4 py-3 text-[0.8125rem]">
                 <span className="text-pass">Lesson complete.</span>{" "}
                 {next ? (
                   <>
@@ -85,12 +85,12 @@ export function LessonView({ slug }: { slug: string }) {
             )}
 
             <section className="mb-8">
-              <h2 className="mb-2 text-[10.5px] font-semibold tracking-[0.16em] text-faint uppercase">
+              <h2 className="mb-2 text-[0.65625rem] font-semibold tracking-[0.16em] text-faint uppercase">
                 Commands in this lesson
               </h2>
               <dl className="divide-y divide-rule rounded border border-rule">
                 {lesson.commands.map((command) => (
-                  <div key={command.keys} className="flex gap-4 px-3 py-2 text-[13px]">
+                  <div key={command.keys} className="flex gap-4 px-3 py-2 text-[0.8125rem]">
                     <dt className="w-32 shrink-0 text-accent">{command.keys}</dt>
                     <dd className="text-muted">{command.what}</dd>
                   </div>
@@ -98,7 +98,7 @@ export function LessonView({ slug }: { slug: string }) {
               </dl>
             </section>
 
-            <nav className="flex items-center justify-between border-t border-rule pt-4 text-[12.5px]">
+            <nav className="flex items-center justify-between border-t border-rule pt-4 text-[0.78125rem]">
               {prev ? (
                 <Link href={`/lessons/${prev.slug}`} className="text-muted hover:text-ink">
                   ← {prev.title}

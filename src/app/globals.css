@@ -5,6 +5,10 @@
  * identity — everything structural is blue-grey and machine-like, and the one
  * warm colour is reserved for the thing that is live: the cursor, the pending
  * command, the lesson you are on.
+ *
+ * The three variants below keep that structure and move the ground and accent
+ * together. They are all dark on purpose: this is an editor, and the design
+ * commits to that rather than hedging.
  */
 @theme {
   --color-ground: #12161f;
@@ -31,8 +35,65 @@
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
+/* Highest contrast: the ground drops away and the text comes forward. */
+:root[data-theme="ink"] {
+  --color-ground: #08090c;
+  --color-panel: #101319;
+  --color-raised: #171b23;
+  --color-rule: #2b3340;
+  --color-ink: #e4ebf5;
+  --color-muted: #8b97a9;
+  --color-faint: #5c687a;
+  --color-accent: #f2b455;
+  --color-accent-dim: #9a7233;
+  --color-warn: #f2b455;
+}
+
+/* Warm brown ground for late nights; the accent moves with it. */
+:root[data-theme="ember"] {
+  --color-ground: #1a1512;
+  --color-panel: #211b16;
+  --color-raised: #2a221c;
+  --color-rule: #3a2f26;
+  --color-ink: #ded2c6;
+  --color-muted: #9b8877;
+  --color-faint: #6b5b4d;
+  --color-accent: #e0844a;
+  --color-accent-dim: #8a5230;
+  --color-mode-visual: #d59bc0;
+  --color-warn: #e0844a;
+}
+
+/* Deep indigo with a soft violet accent. */
+:root[data-theme="iris"] {
+  --color-ground: #14131f;
+  --color-panel: #1b1929;
+  --color-raised: #232037;
+  --color-rule: #322e4c;
+  --color-ink: #d0cbe6;
+  --color-muted: #8983a8;
+  --color-faint: #5b5678;
+  --color-accent: #b49ae8;
+  --color-accent-dim: #6b5a94;
+  --color-mode-visual: #7fd0c4;
+  --color-warn: #b49ae8;
+}
+
 * {
   box-sizing: border-box;
+}
+
+/*
+ * One knob scales the whole app. Tailwind's spacing, radius, and the type sizes
+ * below are all rem-based, so moving the root font size moves padding, gaps, and
+ * text together rather than leaving text large inside unchanged boxes.
+ */
+:root {
+  --app-scale: 1;
+}
+
+html {
+  font-size: calc(16px * var(--app-scale));
 }
 
 html,
@@ -46,7 +107,7 @@ body {
   background: var(--color-ground);
   color: var(--color-ink);
   font-family: var(--font-mono);
-  font-size: 14px;
+  font-size: 0.875rem;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
@@ -60,7 +121,7 @@ body {
 
 .buffer {
   font-family: var(--font-mono);
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: 1.6;
   tab-size: 4;
 }
@@ -127,7 +188,7 @@ body {
 
 .prose {
   font-family: var(--font-sans);
-  font-size: 15.5px;
+  font-size: 0.96875rem;
   line-height: 1.7;
   color: color-mix(in oklab, var(--color-ink) 92%, white);
   max-width: 68ch;
@@ -175,7 +236,7 @@ body {
 
 .keycap {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 0.75rem;
   background: var(--color-raised);
   border: 1px solid var(--color-rule);
   border-bottom-width: 2px;

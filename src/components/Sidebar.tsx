@@ -22,12 +22,12 @@ export function Sidebar({ activeSlug }: { activeSlug?: string }) {
 
   return (
     <nav
-      className="scroll-thin h-full overflow-y-auto border-r border-rule bg-panel py-3 text-[12.5px]"
+      className="scroll-thin h-full overflow-y-auto border-r border-rule bg-panel py-3 text-[0.78125rem]"
       aria-label="Lessons"
     >
       {TIERS.map((tier) => (
         <div key={tier.id} className="mb-4">
-          <div className="px-3 pb-1.5 text-[10.5px] font-semibold tracking-[0.16em] text-faint uppercase">
+          <div className="px-3 pb-1.5 text-[0.65625rem] font-semibold tracking-[0.16em] text-faint uppercase">
             {tier.title}
           </div>
 
@@ -39,7 +39,7 @@ export function Sidebar({ activeSlug }: { activeSlug?: string }) {
                 key={lesson.slug}
                 href={`/lessons/${lesson.slug}`}
                 aria-current={active ? "page" : undefined}
-                className={`flex items-center gap-2 px-3 py-[3px] ${
+                className={`flex items-center gap-2 px-3 py-[0.1875rem] ${
                   active ? "bg-raised text-ink" : "text-muted hover:bg-raised hover:text-ink"
                 }`}
                 style={
@@ -48,13 +48,13 @@ export function Sidebar({ activeSlug }: { activeSlug?: string }) {
               >
                 <span
                   aria-hidden
-                  className="w-[9px] shrink-0 text-[10px]"
+                  className="w-[0.5625rem] shrink-0 text-[0.625rem]"
                   style={{ color: done ? "var(--color-pass)" : "var(--color-faint)" }}
                 >
                   {done ? "●" : "○"}
                 </span>
                 <span className="truncate">{lesson.title}</span>
-                <span className="ml-auto shrink-0 pl-2 text-[11px] text-faint">
+                <span className="ml-auto shrink-0 pl-2 text-[0.6875rem] text-faint">
                   {lesson.keys}
                 </span>
               </Link>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PREFS_BOOT_SCRIPT } from "@/prefs/store";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -10,6 +11,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        {/* Applies the saved theme and scale before first paint. Without it the
+            page renders at the default for a frame and then jumps. */}
+        <script dangerouslySetInnerHTML={{ __html: PREFS_BOOT_SCRIPT }} />
+      </head>
       <body>{children}</body>
     </html>
   );

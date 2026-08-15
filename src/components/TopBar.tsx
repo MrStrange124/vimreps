@@ -6,11 +6,12 @@ const TABS = [
   { href: "/golf", label: "golf" },
   { href: "/cheatsheet", label: "cheatsheet" },
   { href: "/progress", label: "progress" },
+  { href: "/preferences", label: "preferences" },
 ];
 
 export function TopBar({ active }: { active?: string }) {
   return (
-    <header className="flex items-center gap-1 border-b border-rule bg-panel px-3 py-1.5 text-[12px]">
+    <header className="flex items-center gap-1 border-b border-rule bg-panel px-3 py-1.5 text-[0.75rem]">
       <Link href="/" className="pr-3 font-semibold tracking-[0.1em] text-ink">
         vim<span className="text-accent">·</span>dojo
       </Link>
