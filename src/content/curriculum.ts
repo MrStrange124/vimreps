@@ -4,6 +4,8 @@ import { motions } from "./tiers/motions";
 import { operators } from "./tiers/operators";
 import { search } from "./tiers/search";
 import { textobjects } from "./tiers/textobjects";
+import { visual } from "./tiers/visual";
+import { power } from "./tiers/power";
 
 /**
  * The single source of truth for the course.
@@ -12,7 +14,7 @@ import { textobjects } from "./tiers/textobjects";
  * dashboard all read from this one list. Nothing else keeps its own copy, so
  * they cannot drift apart.
  */
-export const TIERS: Tier[] = [foundations, motions, operators, search, textobjects];
+export const TIERS: Tier[] = [foundations, motions, operators, search, textobjects, visual, power];
 
 export const LESSONS: Lesson[] = TIERS.flatMap((tier) => tier.lessons);
 
