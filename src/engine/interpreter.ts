@@ -20,6 +20,7 @@ import { applyMotion, searchBuffer, wordUnderCursor } from "./motions";
 import { resolveTextObject } from "./textobjects";
 import {
   NormalRange,
+  blockColumns,
   normalizeRange,
   opCase,
   opChange,
@@ -114,16 +115,18 @@ function insertStep(state: EditorState, key: KeyToken): StepResult {
   }
 
   if (key === "<Esc>") {
-    const line = tracked.cursor.line;
-    const col = Math.max(0, tracked.cursor.col - 1);
+    const replicated = tracked.blockInsert ? replicateBlockInsert(tracked) : tracked;
+    const line = replicated.cursor.line;
+    const col = Math.max(0, replicated.cursor.col - 1);
     const exited: EditorState = {
-      ...tracked,
+      ...replicated,
       mode: "normal",
       pendingKeys: [],
       insertAnchor: null,
+      blockInsert: null,
       lastChange: tracked.changeBuffer ?? tracked.lastChange,
       changeBuffer: null,
-      cursor: clampPosition(tracked, { line, col }),
+      cursor: clampPosition(replicated, { line, col }),
       desiredCol: col,
     };
     return ok(exited);
@@ -144,6 +147,32 @@ function insertStep(state: EditorState, key: KeyToken): StepResult {
   if (key === "<Down>") return ok(moveInInsert(tracked, 1, 0));
 
   return ok(tracked, [{ type: "bell" }]);
+}
+
+/**
+ * Copy whatever was typed on the first line of a visual-block insert down the
+ * rest of the block. `A` pads lines that are too short to reach the column;
+ * `I` skips them, which is what Vim does and what you want on ragged text.
+ */
+function replicateBlockInsert(state: EditorState): EditorState {
+  const block = state.blockInsert;
+  if (!block) return state;
+
+  const typed = lineAt(state, block.startLine).slice(block.col, state.cursor.col);
+  if (typed === "" || typed.includes("\n")) return state;
+
+  const lines = [...state.lines];
+  for (let l = block.top; l <= block.bottom; l++) {
+    if (l === block.startLine) continue;
+    const text = lines[l] ?? "";
+    if (block.col > text.length) {
+      if (!block.append) continue;
+      lines[l] = text.padEnd(block.col, " ") + typed;
+    } else {
+      lines[l] = text.slice(0, block.col) + typed + text.slice(block.col);
+    }
+  }
+  return { ...state, lines };
 }
 
 function insertText(state: EditorState, text: string): EditorState {
@@ -514,6 +543,21 @@ function executeAction(
   const visual = state.mode !== "normal";
   const line = state.cursor.line;
 
+  // Visual-block `I` and `A` have to be caught before the normal-mode cases
+  // below, which would otherwise treat them as an ordinary insert.
+  if (state.mode === "visual-block" && (name === "I" || name === "A") && state.visualAnchor) {
+    const { top, bottom, left, right } = blockColumns(state.visualAnchor, state.cursor);
+    const col = name === "A" ? right + 1 : left;
+    return ok({
+      ...pushUndo(state),
+      mode: "insert",
+      visualAnchor: null,
+      cursor: clampPosition(state, { line: top, col }, true),
+      blockInsert: { top, bottom, col, startLine: top, append: name === "A" },
+      changeBuffer: keys,
+    });
+  }
+
   switch (name) {
     /* ------------------------------------------------ entering insert -- */
     case "i":
@@ -711,11 +755,6 @@ function executeAction(
         cursor: clampPosition(state, range.end),
       });
     }
-    case "I":
-    case "A":
-      // Handled above for normal mode; in visual-block they insert on every line.
-      return ok(state, [{ type: "bell" }]);
-
     /* --------------------------------------------------------- marks -- */
     case "m": {
       if (!arg) return ok(state, [{ type: "bell" }]);

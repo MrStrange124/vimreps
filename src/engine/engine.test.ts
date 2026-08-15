@@ -249,6 +249,21 @@ describe("visual mode", () => {
     expect(state.lines).toEqual(["ad", "eh", "il"]);
   });
 
+  it("visual block I inserts on every line", () => {
+    const state = run(["one", "two", "six"], "<C-v>jjI# <Esc>");
+    expect(state.lines).toEqual(["# one", "# two", "# six"]);
+  });
+
+  it("visual block A appends on every line", () => {
+    const state = run(["a", "b", "c"], "<C-v>jjA;<Esc>");
+    expect(state.lines).toEqual(["a;", "b;", "c;"]);
+  });
+
+  it("visual block A pads short lines out to the column", () => {
+    const state = run(["long line", "s", "also long"], "$<C-v>jjA!<Esc>");
+    expect(state.lines).toEqual(["long line!", "s        !", "also long!"]);
+  });
+
   it("Esc leaves visual mode", () => {
     const state = run(["abc"], "vl<Esc>");
     expect(state.mode).toBe("normal");

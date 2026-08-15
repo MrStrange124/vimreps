@@ -23,6 +23,7 @@ export function createState(
     cmdline: "",
     cmdlinePrefix: null,
     macros: { recording: null, buffer: [], lastPlayed: null, depth: 0 },
+    blockInsert: null,
     desiredCol: cursor.col,
     searchHighlight: false,
   };

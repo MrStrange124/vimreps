@@ -37,6 +37,20 @@ export type SearchState = { pattern: string; backwards: boolean };
 /** Snapshot pushed onto the undo stack before each change. */
 export type Snapshot = { lines: string[]; cursor: Position };
 
+/**
+ * An in-flight visual-block insert. Vim shows you typing on one line and
+ * replicates it down the block when you press Esc, so the block bounds and the
+ * column the text started at have to survive the whole insert session.
+ */
+export type BlockInsert = {
+  top: number;
+  bottom: number;
+  col: number;
+  startLine: number;
+  /** True for `A`, which pads short lines out to the column. */
+  append: boolean;
+};
+
 export type MacroState = {
   /** Register currently being recorded into, or null. */
   recording: string | null;
@@ -80,6 +94,9 @@ export type EditorState = {
   cmdlinePrefix: ":" | "/" | "?" | null;
 
   macros: MacroState;
+
+  /** Set while a visual-block `I`/`A` insert is being typed. */
+  blockInsert: BlockInsert | null;
 
   /** Column `j` and `k` try to return to after passing through shorter lines. */
   desiredCol: number;
