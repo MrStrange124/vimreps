@@ -3,7 +3,7 @@ import { TopBar } from "@/components/TopBar";
 import { PracticeView } from "./PracticeView";
 
 export const metadata: Metadata = {
-  title: "Practice — vim·dojo",
+  title: "Practice — vim·reps",
   description: "Endless generated drills, weighted toward whatever you keep getting wrong.",
 };
 

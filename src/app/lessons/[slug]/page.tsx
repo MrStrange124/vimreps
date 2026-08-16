@@ -14,7 +14,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const lesson = lessonBySlug(slug);
   return {
-    title: lesson ? `${lesson.title} — vim·dojo` : "vim·dojo",
+    title: lesson ? `${lesson.title} — vim·reps` : "vim·reps",
     description: lesson?.summary,
   };
 }

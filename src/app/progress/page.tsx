@@ -3,7 +3,7 @@ import { TopBar } from "@/components/TopBar";
 import { ProgressView } from "./ProgressView";
 
 export const metadata: Metadata = {
-  title: "Progress — vim·dojo",
+  title: "Progress — vim·reps",
   description: "Lessons cleared, drill accuracy, best golf scores, and your practice streak.",
 };
 

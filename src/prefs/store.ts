@@ -8,7 +8,7 @@
  * unrecognised version is discarded rather than migrated.
  */
 
-const KEY = "vim-dojo:prefs:v1";
+const KEY = "vimreps:prefs:v1";
 
 export const THEMES = [
   {

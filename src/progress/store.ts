@@ -10,7 +10,7 @@
  * can never leave a half-readable record behind.
  */
 
-const KEY = "vim-dojo:progress:v1";
+const KEY = "vimreps:progress:v1";
 
 export type SkillRecord = { seen: number; failed: number };
 
@@ -49,7 +49,7 @@ export function saveProgress(progress: Progress): void {
   if (typeof window === "undefined") return;
   try {
     window.localStorage.setItem(KEY, JSON.stringify(progress));
-    window.dispatchEvent(new Event("vim-dojo:progress"));
+    window.dispatchEvent(new Event("vimreps:progress"));
   } catch {
     // Storage is full or blocked. Losing progress is better than losing the app.
   }

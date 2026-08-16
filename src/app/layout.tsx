@@ -3,7 +3,7 @@ import { PREFS_BOOT_SCRIPT } from "@/prefs/store";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "vim·dojo",
+  title: "vim·reps",
   description:
     "Learn Vim by using it: a full course from modes to macros, each lesson graded on the keys you press, not just the text you end up with.",
 };

@@ -1,4 +1,4 @@
-# vim·dojo
+# vim·reps
 
 An interactive Vim trainer: a course of lessons from modes through macros, each
 backed by a real editor pane where you type actual Vim commands and are graded on

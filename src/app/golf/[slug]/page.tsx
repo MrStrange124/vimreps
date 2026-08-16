@@ -15,7 +15,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const challenge = challengeBySlug(slug);
   return {
-    title: challenge ? `${challenge.title} — golf — vim·dojo` : "Golf — vim·dojo",
+    title: challenge ? `${challenge.title} — golf — vim·reps` : "Golf — vim·reps",
     description: challenge?.blurb,
   };
 }

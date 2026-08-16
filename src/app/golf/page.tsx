@@ -3,7 +3,7 @@ import { TopBar } from "@/components/TopBar";
 import { GolfIndex } from "./GolfIndex";
 
 export const metadata: Metadata = {
-  title: "Golf — vim·dojo",
+  title: "Golf — vim·reps",
   description: "Reach the target buffer in as few keystrokes as you can.",
 };
 

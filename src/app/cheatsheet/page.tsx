@@ -3,7 +3,7 @@ import { TopBar } from "@/components/TopBar";
 import { CheatsheetView } from "./CheatsheetView";
 
 export const metadata: Metadata = {
-  title: "Cheatsheet — vim·dojo",
+  title: "Cheatsheet — vim·reps",
   description: "Every command the course teaches, grouped and searchable.",
 };
 

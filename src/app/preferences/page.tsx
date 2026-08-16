@@ -3,7 +3,7 @@ import { TopBar } from "@/components/TopBar";
 import { PreferencesView } from "./PreferencesView";
 
 export const metadata: Metadata = {
-  title: "Preferences — vim·dojo",
+  title: "Preferences — vim·reps",
   description: "Pick a dark variant and set how big everything is.",
 };
 

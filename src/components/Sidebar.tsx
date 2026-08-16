@@ -16,8 +16,8 @@ export function Sidebar({ activeSlug }: { activeSlug?: string }) {
   useEffect(() => {
     const refresh = () => setProgress(loadProgress());
     refresh();
-    window.addEventListener("vim-dojo:progress", refresh);
-    return () => window.removeEventListener("vim-dojo:progress", refresh);
+    window.addEventListener("vimreps:progress", refresh);
+    return () => window.removeEventListener("vimreps:progress", refresh);
   }, []);
 
   return (

@@ -44,8 +44,8 @@ export function ProgressView() {
     const refresh = () => setProgress(loadProgress());
     refresh();
     setDays(heatmapDays());
-    window.addEventListener("vim-dojo:progress", refresh);
-    return () => window.removeEventListener("vim-dojo:progress", refresh);
+    window.addEventListener("vimreps:progress", refresh);
+    return () => window.removeEventListener("vimreps:progress", refresh);
   }, []);
 
   if (!progress) {
